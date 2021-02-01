@@ -78,29 +78,36 @@
 			if (!results[2]) return "";
 			return decodeURIComponent(results[2].replace(/\+/g, " "));
 		}
-		const nowDate = new Date();
-		const nowUnix = Math.floor(nowDate.getTime() / 1000);
+		function getJSTDate(unix = -1) {
+			const jSTdate = unix < 0 ? new Date() : new Date(unix);
+			jSTdate.setHours(jSTdate.getHours() + 9);
+			return jSTdate;
+		}
+
+		const nowJSTDate = getJSTDate();
 		document
 			.getElementById("share")
 			.setAttribute(
 				"data-text",
 				"午前" +
-					nowDate.getHours().toString() +
+					nowJSTDate.getUTCHours() +
 					"時" +
-					nowDate.getMinutes().toString() +
+					nowJSTDate.getUTCMinutes() +
 					"分におきました、おはようございます。"
 			);
+		const nowUnix = Math.floor(new Date().getTime() / 1000);
 		document
 			.getElementById("share")
 			.setAttribute("data-url", "https://ohayougozaima.su?unix=" + nowUnix);
+
 		const unix = getParameterByName("unix");
-		const date = new Date(unix * 1000);
-		if (unix !== null && unix !== "" && !Number.isNaN(date.getTime())) {
+		const jSTdate = getJSTDate(unix * 1000);
+		if (unix !== null && unix !== "" && !Number.isNaN(jSTdate.getTime())) {
 			document.getElementById("ohayo").innerText =
 				"午前" +
-				date.getHours().toString() +
+				jSTdate.getUTCHours() +
 				"時" +
-				date.getMinutes().toString() +
+				jSTdate.getUTCMinutes() +
 				"分起床\nおはようございます";
 			document.getElementById("shareDescription").innerText = "あなたも起きる↓";
 		}
