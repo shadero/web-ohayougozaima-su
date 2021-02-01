@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>おきました</title>
+		<meta charset="UTF-8" />
+		<meta property="og:title" content="おきました" />
+		<meta property="og:description" content="起きたときが朝" />
+		<meta property="og:url" content="https://ohayougozaima.su" />
+		<meta property="og:type" content="website" />
+		<meta property="twitter:card" content="summary" />
+		<meta
+			property="og:image"
+			content="https://1.bp.blogspot.com/-vwbOOXWsyPY/VJ6XMe6OliI/AAAAAAAAqHc/ifq3ECwurpc/s800/time_man1_asa.png"
+		/>
+		<style>
+			body {
+				width: auto;
+				margin-right: auto;
+				margin-left: auto;
+				font-family: "Noto Sans JP", sans-serif;
+			}
+
+			#header {
+				font-size: 4em;
+				font-weight: 500;
+			}
+		</style>
+		<link rel="preconnect" href="https://fonts.gstatic.com" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<center>
+			<div id="header">おはようございます</div>
+			<br />
+			<div id="shareDescription">起きる↓</div>
+			<a
+				id="share"
+				href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+				class="twitter-share-button"
+				data-size="large"
+				data-text="おきました、おはようございます。"
+				data-url="https://twitter.com/shadero_vrc"
+				data-show-count="false"
+				>Twitter
+			</a>
+			<script
+				async
+				src="https://platform.twitter.com/widgets.js"
+				charset="utf-8"
+			></script>
+		</center>
+	</body>
+	<script>
+		function getParameterByName(name, url = window.location.href) {
+			name = name.replace(/[\[\]]/g, "\\$&");
+			var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+				results = regex.exec(url);
+			if (!results) return null;
+			if (!results[2]) return "";
+			return decodeURIComponent(results[2].replace(/\+/g, " "));
+		}
+		const nowDate = new Date();
+		const nowUnix = Math.floor(nowDate.getTime() / 1000);
+		document
+			.getElementById("share")
+			.setAttribute(
+				"data-text",
+				"午前" +
+					nowDate.getHours().toString() +
+					"時" +
+					nowDate.getMinutes().toString() +
+					"分におきました、おはようございます。"
+			);
+		document
+			.getElementById("share")
+			.setAttribute("data-url", "https://ohayougozaima.su?unix=" + nowUnix);
+		const unix = getParameterByName("unix");
+		const date = new Date(unix * 1000);
+		if (unix !== null && unix !== "" && !Number.isNaN(date.getTime())) {
+			document.getElementById("header").innerText =
+				"午前" +
+				date.getHours().toString() +
+				"時" +
+				date.getMinutes().toString() +
+				"分起床\nおはようございます";
+			document.getElementById("shareDescription").innerText = "あなたも起きる↓";
+		}
+	</script>
+</html>
