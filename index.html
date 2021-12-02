@@ -13,11 +13,11 @@
 
 		gtag("config", "G-J9HEJW28WD");
 	</script>
+
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>おきました</title>
 	<link rel="icon" href="favicon.ico">
-	<meta charset="UTF-8" />
 	<meta property="og:title" content="おきました" />
 	<meta property="og:description" content="起きたときが朝" />
 	<meta property="og:url" content="https://ohayougozaima.su" />
@@ -37,7 +37,7 @@
 		}
 
 		header {
-			font-size: 4em;
+			font-size: 64px;
 			font-weight: 500;
 		}
 
@@ -49,20 +49,42 @@
 			margin: 50px 20px 0 0;
 			text-align: right;
 		}
+
+		.shareButton {
+			font-size: 15px;
+			position: relative;
+			display: inline-block;
+			padding: 3px 15px;
+			transition: 0s;
+			text-align: center;
+			vertical-align: middle;
+			text-decoration: none;
+			border-radius: 100vh
+		}
+
+		.shareButton-twitter {
+			color: #fff;
+			background-color: #1d9bf0;
+		}
+
+		.shareButton-twitter:hover {
+			color: #fff;
+			background: #0c7abf;
+		}
 	</style>
 	<link rel="preconnect" href="https://fonts.gstatic.com" />
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet" />
+	<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 
 <body>
 	<header id="ohayo">おはようございます</header>
 	<main>
 		<div id="shareDescription">起きる↓</div>
-		<a id="share" href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button"
-			data-size="large" data-text="おきました、おはようございます。" data-url="https://ohayougozaima.su"
-			data-show-count="false">Twitter
+		<a href="share.html?type=twitter" class="shareButton shareButton-twitter">
+			<i class="fab fa-twitter"> </i>
+			ツイート
 		</a>
-		<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 	</main>
 	<footer>
 		Created By <a href="https://twitter.com/shadero_vrc">@shadero_vrc</a>
@@ -77,27 +99,12 @@
 		if (!results[2]) return "";
 		return decodeURIComponent(results[2].replace(/\+/g, " "));
 	}
+
 	function getJSTDate(unix = -1) {
 		const jSTdate = unix < 0 ? new Date() : new Date(unix);
 		jSTdate.setHours(jSTdate.getHours() + 9);
 		return jSTdate;
 	}
-
-	const nowJSTDate = getJSTDate();
-	document
-		.getElementById("share")
-		.setAttribute(
-			"data-text",
-			"午前" +
-			nowJSTDate.getUTCHours() +
-			"時" +
-			nowJSTDate.getUTCMinutes() +
-			"分におきました、おはようございます。"
-		);
-	const nowUnix = Math.floor(new Date().getTime() / 1000);
-	document
-		.getElementById("share")
-		.setAttribute("data-url", "https://ohayougozaima.su?unix=" + nowUnix);
 
 	const unix = getParameterByName("unix");
 	const jSTdate = getJSTDate(unix * 1000);
