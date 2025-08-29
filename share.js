@@ -1,7 +1,7 @@
 function getJSTDate(unix = -1) {
-    const jSTdate = unix < 0 ? new Date() : new Date(unix);
-    jSTdate.setHours(jSTdate.getHours() + 9);
-    return jSTdate;
+	const jSTdate = unix < 0 ? new Date() : new Date(unix);
+	jSTdate.setHours(jSTdate.getHours() + 9);
+	return jSTdate;
 }
 
 const nowUnix = Math.floor(new Date().getTime() / 1000);
@@ -9,10 +9,10 @@ const url = "https://ohayougozaima.su?unix=" + nowUnix;
 
 const nowJSTDate = getJSTDate();
 const text =
-    "午前" +
-    nowJSTDate.getUTCHours() +
-    "時" +
-    nowJSTDate.getUTCMinutes() +
-    "分におきました、おはようございます。";
+	"午前" +
+	nowJSTDate.getUTCHours() +
+	"時" +
+	nowJSTDate.getUTCMinutes() +
+	"分におきました、おはようございます。";
 
 location.replace("https://twitter.com/intent/tweet?url=" + url + "&text=" + text);
