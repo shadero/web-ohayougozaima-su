@@ -24,54 +24,7 @@
 	<meta property="og:type" content="website" />
 	<meta property="twitter:card" content="summary" />
 	<meta property="og:image" content="https://ohayougozaima.su/ogp_image.png" />
-	<style>
-		body {
-			width: auto;
-			max-width: 600px;
-			margin: 0;
-			margin-right: auto;
-			margin-left: auto;
-			font-family: "Noto Sans JP", sans-serif;
-			text-align: center;
-		}
-
-		header {
-			font-size: 64px;
-			font-weight: 500;
-		}
-
-		main {
-			margin: 25px 0 0 0;
-		}
-
-		footer {
-			margin: 50px 20px 0 0;
-			text-align: right;
-		}
-
-		.shareButton {
-			font-size: 15px;
-			position: relative;
-			display: inline-block;
-			padding: 3px 15px;
-			transition: 0s;
-			text-align: center;
-			vertical-align: middle;
-			text-decoration: none;
-			border-radius: 100vh
-		}
-
-		.shareButton-twitter {
-			color: #fff;
-			background-color: #1d9bf0;
-		}
-
-		.shareButton-twitter:hover {
-			color: #fff;
-			background: #0c7abf;
-		}
-
-	</style>
+	<link rel="stylesheet" href="./style.css">
 	<link rel="preconnect" href="https://fonts.gstatic.com" />
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet" />
 	<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
@@ -92,33 +45,6 @@
 		This repository is <a href="https://github.com/shadero/web-ohayougozaima-su">here!!</a>
 	</footer>
 </body>
-<script>
-	function getParameterByName(name, url = window.location.href) {
-		name = name.replace(/[\[\]]/g, "\\$&");
-		const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-			results = regex.exec(url);
-		if (!results) return null;
-		if (!results[2]) return "";
-		return decodeURIComponent(results[2].replace(/\+/g, " "));
-	}
-
-	function getJSTDate(unix = -1) {
-		const jSTdate = unix < 0 ? new Date() : new Date(unix);
-		jSTdate.setHours(jSTdate.getHours() + 9);
-		return jSTdate;
-	}
-
-	const unix = getParameterByName("unix");
-	const jSTdate = getJSTDate(unix * 1000);
-	if (unix !== null && unix !== "" && !Number.isNaN(jSTdate.getTime())) {
-		document.getElementById("ohayo").innerText =
-			"午前" +
-			jSTdate.getUTCHours() +
-			"時" +
-			jSTdate.getUTCMinutes() +
-			"分起床\nおはようございます";
-		document.getElementById("shareDescription").innerText = "あなたも起きる↓";
-	}
-</script>
+<script src="./index.js"></script>
 
 </html>
