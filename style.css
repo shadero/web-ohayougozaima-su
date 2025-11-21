@@ -8,12 +8,12 @@ body {
 	text-align: center;
 }
 
-header {
+#ohayo {
 	font-size: 64px;
 	font-weight: 500;
 }
 
-main {
+#shareDescription {
 	margin: 25px 0 0 0;
 }
 
