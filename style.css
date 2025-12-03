@@ -8,6 +8,14 @@ body {
 	text-align: center;
 }
 
+#notice-background {
+	background-color: #ffdddd;
+	padding: 10px;
+	border: 2px solid #ff8888;
+	border-radius: 10px;
+	margin: 6px;
+}
+
 #ohayo {
 	font-size: 64px;
 	font-weight: 500;
