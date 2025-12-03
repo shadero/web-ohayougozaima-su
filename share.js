@@ -5,7 +5,7 @@ function getJSTDate(unix = -1) {
 }
 
 const nowUnix = Math.floor(new Date().getTime() / 1000);
-const url = "https://ohayougozaima.su?unix=" + nowUnix;
+const url = "https://ohayou.shadero.net?unix=" + nowUnix;
 
 const nowJSTDate = getJSTDate();
 const text =
